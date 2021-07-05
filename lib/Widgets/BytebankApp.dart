@@ -1,30 +1,18 @@
+import 'package:bytebank/Widgets/Dashboard/Dashboard.dart';
 import 'package:flutter/material.dart';
 
 class BytebankApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Dash'),
-        ),
-        body: Column(
-          children: <Widget>[
-            Image.asset('./lib/assets/bytebank_logo.png'),
-            Container(
-              height: 120,
-              width: 100,
-              color: Colors.green,
-              child: Column(
-                children: [
-                  Icon(Icons.people),
-                  Text(''),
-                ],
-              ),
-            ),
-          ],
-        ),
+      theme: ThemeData(
+        primaryColor: Colors.green[900],
+        accentColor: Colors.blue[200],
+        buttonTheme: ButtonThemeData(
+            buttonColor: Colors.blueAccent[500],
+            textTheme: ButtonTextTheme.primary),
       ),
+      home: Dashboard(),
     );
   }
 }
