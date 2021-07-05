@@ -10,8 +10,18 @@ class BytebankApp extends StatelessWidget {
         ),
         body: Column(
           children: <Widget>[
-            Image.network(
-                'https://cdn.pixabay.com/photo/2019/10/15/06/03/pinwheel-4550711_960_720.jpg'),
+            Image.asset('./lib/assets/bytebank_logo.png'),
+            Container(
+              height: 120,
+              width: 100,
+              color: Colors.green,
+              child: Column(
+                children: [
+                  Icon(Icons.people),
+                  Text(''),
+                ],
+              ),
+            ),
           ],
         ),
       ),
