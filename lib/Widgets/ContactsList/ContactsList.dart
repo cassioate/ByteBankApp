@@ -1,4 +1,4 @@
-import 'package:bytebank/Widgets/Dashboard/Dashboard.dart';
+import 'package:bytebank/Widgets/ContactForm/ContactForm.dart';
 import 'package:flutter/material.dart';
 
 class ContactsList extends StatefulWidget {
@@ -7,6 +7,15 @@ class ContactsList extends StatefulWidget {
 }
 
 class _ContactsListState extends State<ContactsList> {
+  adicionar() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ContactForm(),
+      ),
+    ).then((value) => print(value));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +39,7 @@ class _ContactsListState extends State<ContactsList> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => {},
+        onPressed: () => adicionar(),
         child: Icon(Icons.add),
       ),
     );
