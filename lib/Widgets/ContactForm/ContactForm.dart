@@ -10,11 +10,14 @@ class _ContactFormState extends State<ContactForm> {
   final TextEditingController _nomeController = TextEditingController();
   final TextEditingController _accountNumberController =
       TextEditingController();
-  Contact newContact = Contact(null, null);
+  Contact newContact = Contact(null, null, null);
 
   criando(context) {
     this.newContact = Contact(
-        _nomeController.text, int.tryParse(_accountNumberController.text));
+      1,
+      _nomeController.text,
+      int.tryParse(_accountNumberController.text),
+    );
     Navigator.pop(context, this.newContact);
   }
 
