@@ -1,5 +1,6 @@
 import 'package:bytebank/Model/Contact.dart';
 import 'package:bytebank/Widgets/ContactForm/ContactForm.dart';
+import 'package:bytebank/database/app_database.dart';
 import 'package:flutter/material.dart';
 
 class ContactsList extends StatefulWidget {
@@ -8,7 +9,7 @@ class ContactsList extends StatefulWidget {
 }
 
 class _ContactsListState extends State<ContactsList> {
-  final List<Contact> contacts = [];
+  List<Contact>? contacts = [];
 
   adicionar() {
     Navigator.push(
@@ -20,7 +21,7 @@ class _ContactsListState extends State<ContactsList> {
   }
 
   contactItemBuilder(context, index) {
-    final Contact contact = contacts[index];
+    final Contact? contact = contacts?[index];
     return ContactItem(contact);
   }
 
@@ -30,9 +31,15 @@ class _ContactsListState extends State<ContactsList> {
       appBar: AppBar(
         title: Text('Contacts'),
       ),
-      body: ListView.builder(
-        itemBuilder: (context, index) => contactItemBuilder(context, index),
-        itemCount: contacts.length,
+      body: FutureBuilder<List<Contact>>(
+        future: Future.delayed(Duration(seconds: 1)).then((value) => findAll()),
+        builder: (context, snapshot) {
+          contacts = snapshot.data;
+          return ListView.builder(
+            itemBuilder: (context, index) => contactItemBuilder(context, index),
+            itemCount: contacts?.length,
+          );
+        },
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => adicionar(),
@@ -43,7 +50,7 @@ class _ContactsListState extends State<ContactsList> {
 }
 
 class ContactItem extends StatelessWidget {
-  final Contact contact;
+  final Contact? contact;
 
   ContactItem(this.contact);
 
@@ -52,13 +59,13 @@ class ContactItem extends StatelessWidget {
     return Card(
       child: ListTile(
         title: Text(
-          contact.name!,
+          contact?.name ?? '',
           style: TextStyle(
             fontSize: 24.0,
           ),
         ),
         subtitle: Text(
-          contact.accountNumber.toString(),
+          contact?.accountNumber.toString() ?? '',
           style: TextStyle(
             fontSize: 16.0,
           ),

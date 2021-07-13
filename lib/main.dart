@@ -6,7 +6,5 @@ import 'database/app_database.dart';
 
 void main() {
   runApp(BytebankApp());
-  save(Contact(null, 'Cassio', 123)).then((id) {
-    findAll().then((value) => print(value));
-  });
+  // save(Contact(null, 'C2assio', 123));
 }
