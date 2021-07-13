@@ -32,12 +32,12 @@ class _ContactsListState extends State<ContactsList> {
         title: Text('Contacts'),
       ),
       body: FutureBuilder<List<Contact>>(
-        future: Future.delayed(Duration(seconds: 1)).then((value) => findAll()),
+        future: Future.delayed(Duration(seconds: 5)).then((value) => findAll()),
         builder: (context, snapshot) {
           contacts = snapshot.data;
           return ListView.builder(
             itemBuilder: (context, index) => contactItemBuilder(context, index),
-            itemCount: contacts?.length,
+            itemCount: contacts?.length ?? 0,
           );
         },
       ),
