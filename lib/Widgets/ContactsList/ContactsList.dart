@@ -9,12 +9,13 @@ class ContactsList extends StatefulWidget {
 
 class _ContactsListState extends State<ContactsList> {
   adicionar() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => ContactForm(),
-      ),
-    ).then((value) => print(value));
+    Navigator.of(context)
+        .push(
+          MaterialPageRoute(
+            builder: (context) => ContactForm(),
+          ),
+        )
+        .then((value) => setState(() => {}));
   }
 
   @override

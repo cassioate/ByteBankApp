@@ -14,7 +14,7 @@ class ContactsListFutureBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<Contact>>(
-      future: Future.delayed(Duration(seconds: 2)).then((value) => findAll()),
+      future: findAll(),
       builder: (context, snapshot) {
         switch (snapshot.connectionState) {
           case ConnectionState.none:

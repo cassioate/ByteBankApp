@@ -6,5 +6,4 @@ import 'database/app_database.dart';
 
 void main() {
   runApp(BytebankApp());
-  save(Contact(null, 'Cassio', 123));
 }
